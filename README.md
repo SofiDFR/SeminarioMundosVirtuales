@@ -391,7 +391,7 @@ La matriz de modelo resultante en el sistema de referencias mundial es la siguie
 Matriz de Modelo con Rotación:
 0.70711	0.00000	0.70711	0.00000
 0.00000	1.00000	0.00000	0.00000
--0.70711	0.00000	0.70711	3.00000
+-0.70711 0.00000 0.70711 3.00000
 0.00000	0.00000	0.00000	1.00000
 ```
 En esta matriz, los valores `0.70711` en la primera y tercera fila reflejan la rotación de 45 grados en el eje Y, mientras que el valor `3.00000` en la tercera fila indica una traslación en el eje Z.
