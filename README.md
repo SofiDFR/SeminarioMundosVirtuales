@@ -414,7 +414,7 @@ public class LocalCoordinates : MonoBehaviour
         transform.position = new Vector3(3, 1, 1);
         transform.rotation = Quaternion.Euler(45, 0, 45);
 
-        // Convert a global point to local
+        // Convierte un punto global a un punto local
         Vector3 worldPoint = new Vector3(3, 1, 1);
         Vector3 localPoint = transform.worldToLocalMatrix.MultiplyPoint(worldPoint);
 
