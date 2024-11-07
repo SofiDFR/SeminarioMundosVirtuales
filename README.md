@@ -311,8 +311,8 @@ En un instante de la ejecución del ejercicio 1, la matriz de proyección utiliz
 Matriz de Proyección:
 0.71172	0.00000	0.00000	0.00000
 0.00000	1.73205	0.00000	0.00000
-0.00000	0.00000	-1.00060	-0.60018
-0.00000	0.00000	-1.00000	0.00000
+0.00000	0.00000	-1.00060 -0.60018
+0.00000	0.00000	-1.00000 0.00000
 ```
 
 Esta matriz fue obtenida usando el siguiente código en el método `Start()`:
@@ -359,7 +359,7 @@ void Start()
 Matriz de Vista:
 1.00000	0.00000	0.00000	0.00000
 0.00000	1.00000	0.00000	0.00000
-0.00000	0.00000	-1.00000	0.00000
+0.00000	0.00000	-1.00000 0.00000
 0.00000	0.00000	0.00000	1.00000
 ```
 Esta matriz representa una cámara que está orientada en el sistema de coordenadas por defecto, mirando hacia el eje negativo de Z, sin ninguna traslación o rotación aplicada.
