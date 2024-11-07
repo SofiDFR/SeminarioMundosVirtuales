@@ -418,7 +418,7 @@ public class LocalCoordinates : MonoBehaviour
         Vector3 worldPoint = new Vector3(3, 1, 1);
         Vector3 localPoint = transform.worldToLocalMatrix.MultiplyPoint(worldPoint);
 
-        Debug.Log("Point in local coordinates: " + localPoint);
+        Debug.Log("Punto en las coordenadas locales: " + localPoint);
     }
 }
 
