@@ -264,21 +264,22 @@ public class OrthographicProjectionMatrix : MonoBehaviour {
 
 En Unity, para obtener la matriz de transformación que convierte las coordenadas locales de un objeto en las coordenadas del sistema global (mundial), puedes utilizar la propiedad `Transform.localToWorldMatrix`. Esta propiedad devuelve una matriz de 4x4 que te permite convertir las posiciones, rotaciones y escalas locales del objeto en coordenadas globales.
 
-La matriz de transformación `localToWorldMatrix` de un objeto transforma puntos, direcciones y vectores del sistema de coordenadas local del objeto al sistema de coordenadas global (o mundial). Esto incluye no sólo la traslación (posición), sino también la rotación y el escalado.
-
 ```cs
-// Obtenemos la matriz de transformación del objeto
-Matrix4x4 matrix = transform.localToWorldMatrix;
-
-// Ahora, podemos usar esta matriz para convertir un punto local a un punto mundial
-Vector3 puntoLocal = new Vector3(1, 1, 1);  // Punto en el espacio local del objeto
-Vector3 puntoMundial = matrix.MultiplyPoint(puntoLocal);  // Convierte el punto a coordenadas globales
-
-Debug.Log("Punto mundial: " + puntoMundial);
+public class LocalToWorldMatrix : MonoBehaviour {
+  void Start() {
+    Transform transform = GetComponent<Transform>();
+    if (transform != null) {
+      // Obtener la matriz de transformación entre el sistema de coordenadas local y el mundial
+      Matrix4x4 localToWorldMatrix = transform.localToWorldMatrix;
+      Debug.Log("Matriz de transformación local a mundial: " + localToWorldMatrix);
+    } else {
+      Debug.LogError("No se encontró el componente Transform.");
+    }
+  }
+} 
 ```
 
   - **`transform.localToWorldMatrix`**: Obtiene la matriz de transformación que mapea las coordenadas locales del objeto a las coordenadas globales. La matriz de 4x4 incluye la posición, la rotación y la escala del objeto en el espacio mundial.
-  - **`matrix.MultiplyPoint(puntoLocal)`**: La función `MultiplyPoint()` aplica la matriz de transformación a un punto en el espacio local para obtener la posición correspondiente en el espacio global. Si usas `MultiplyVector()`, obtendrás la transformación de vectores, es decir, sin considerar la traslación, solo rotación y escala.
 
 ---
 
