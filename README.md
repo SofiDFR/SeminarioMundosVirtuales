@@ -218,7 +218,7 @@ rigidbody.MoveRotation(rotacionFisica);
 Para averiguar la matriz de proyección en perspectiva utilizada para proyectar la escena al último frame renderizado, podemos acceder a la matriz directamente desde la cámara a través de un script en c#.
 
 ```cs
-public class ProyeccionMatriz : MonoBehaviour { 
+public class ProjectionMatrix : MonoBehaviour { 
   void Start() { 
     // Obtenemos la cámara principal 
     Camera cam = Camera.main; 
@@ -282,12 +282,12 @@ Debug.Log("Punto mundial: " + puntoMundial);
 
 ---
 
-## 11. Cómo puedes obtener la matriz para cambiar al sistema de referencia de vista
+## 11. ¿Cómo puedes obtener la matriz para cambiar al sistema de referencia de vista?
 
 Para obtener la matriz que cambia al sistema de referencia de vista, debemos utilizar la matriz de transformación de la cámara. Esta matriz nos permite convertir coordenadas del mundo a coordenadas de la cámara. Gracias a este script podemos conseguirla:
 
 ```cs
-public class ViewMatrixExample : MonoBehaviour {
+public class ViewMatrix : MonoBehaviour {
   void Start() { 
     Camera camera = Camera.main;
     if (camera != null) {
