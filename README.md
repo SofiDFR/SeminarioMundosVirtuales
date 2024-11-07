@@ -410,7 +410,7 @@ public class LocalCoordinates : MonoBehaviour
 {
     void Start()
     {
-        // Define global position and rotation
+        // Define posición y rotación globales
         transform.position = new Vector3(3, 1, 1);
         transform.rotation = Quaternion.Euler(45, 0, 45);
 
