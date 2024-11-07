@@ -399,7 +399,7 @@ En esta matriz, los valores `0.70711` en la primera y tercera fila reflejan la r
 
 ---
 
-## 15. ¿Como puedes calcular las coordenadas del sistema de referencia de un objeto con las siguientes propiedades del Transform:?: Position (3, 1, 1), Rotation (45, 0, 45)
+## 15. ¿Como puedes calcular las coordenadas del sistema de referencia de un objeto con las siguientes propiedades del Transform?: Position (3, 1, 1), Rotation (45, 0, 45)
 
 Para calcular las coordenadas de un punto en el sistema de referencia local de un objeto en Unity, dadas las propiedades de Posición y Rotación, puedes usar la propiedad worldToLocalMatrix del Transform. Esta matriz convierte las coordenadas globales (mundiales) a locales, considerando la posición, rotación y escala del objeto.
 
