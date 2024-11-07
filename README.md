@@ -109,15 +109,15 @@ Cabe destacar que en Unity, los objetos con Rigidbody no deben modificar su posi
 
 En Unity, las operaciones de traslación y rotación no son conmutativas, lo que significa que el orden en el que realizamos estas operaciones afectará el resultado final.
 
- 1.- **Primero trasladamos la cámara 2 metros en cada uno de los ejes y luego la rotamos 30º alrededor del eje Y**:
+1.- **Primero trasladamos la cámara 2 metros en cada uno de los ejes y luego la rotamos 30º alrededor del eje Y**:
  
-   * **Traslación**: Movemos la cámara 2 metros en los ejes X, Y y Z. Teniendo en cuenta que la posición inicial de la cámara es (0,0,0). Después de la traslación, la posición es (2,2,2).
-   * **Rotación**: Luego, rotamos la cámara 30º alrededor del eje Y. Esta rotación se aplica en la nueva posición de la cámara. La cámara girará en torno a su propia posición actual (2,2,2) en relación al eje Y.
-     
- 2.- **Primero rotamos la cámara 30º alrededor del eje Y y luego la desplazamos 2 metros en cada uno de los ejes**:
+  * **Traslación**: Movemos la cámara 2 metros en los ejes X, Y y Z. Teniendo en cuenta que la posición inicial de la cámara es (0,0,0). Después de la traslación, la posición es (2,2,2).
+  * **Rotación**: Luego, rotamos la cámara 30º alrededor del eje Y. Esta rotación se aplica en la nueva posición de la cámara. La cámara girará en torno a su propia posición actual (2,2,2) en relación al eje Y.
 
-  * **Rotación**: Con la cámara en la posición (0,0,0), la rotamos 30º alrededor del eje Y, la cámara girará en torno a ese punto de origen.
-  * **Traslación**: Después de la rotación, trasladamos la cámara 2 metros en los ejes X, Y y Z. El resultado de esta traslación depende de la nueva orientación de la cámara después de la rotación.
+2.- **Primero rotamos la cámara 30º alrededor del eje Y y luego la desplazamos 2 metros en cada uno de los ejes**:
+
+ * **Rotación**: Con la cámara en la posición (0,0,0), la rotamos 30º alrededor del eje Y, la cámara girará en torno a ese punto de origen.
+ * **Traslación**: Después de la rotación, trasladamos la cámara 2 metros en los ejes X, Y y Z. El resultado de esta traslación depende de la nueva orientación de la cámara después de la rotación.
     
 Debido a la naturaleza no conmutativa de estas operaciones, **no** obtenemos el mismo resultado en ambos casos. La posición y orientación finales de la cámara serán diferentes porque la traslación y la rotación alteran la posición de referencia y el eje de rotación.
 
@@ -159,7 +159,21 @@ En este caso, se ajustó el valor de `Near` para que se pasara de la posición d
 
 ## 5. Como puedes aumentar el ángulo de la cámara. Qué efecto tiene disminuir el ángulo de la cámara.
 
+1.- **Cómo aumentar el ángulo de la cámara**:
 
+  * Ve al inspector de la cámara.
+  * Encuentra la propiedad llamada "Field of View".
+  * Incrementa el valor de esta propiedad.
+
+Al aumentar el ángulo de visión, estás ampliando el campo de visión de la cámara, lo que permite ver una porción más grande del escenario.
+
+2.- **Efecto de disminuir el ángulo de la cámara**:
+
+  * Ve al inspector de la cámara.
+  * Encuentra la propiedad "Field of View".
+  * Reduce el valor de esta propiedad.
+    
+Al disminuir el ángulo de visión, estás reduciendo el campo de visión de la cámara, lo que hace que la escena se vea más estrecha y más "acercada".
 
 ## 6. Es correcta la siguiente afirmación: Para realizar la proyección al espacio 2D, en el inspector de la cámara, cambiaremos el valor de projection, asignándole el valor de orthographic
 
