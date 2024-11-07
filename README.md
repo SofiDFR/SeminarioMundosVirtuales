@@ -206,7 +206,7 @@ transform.rotation = rotacion90Y;
 transform.rotation *= Quaternion.Euler(0, 45 * Time.deltaTime, 0);
 ```
 
-4. Rotación son física: Rotación con `rigidbody.MoveRotation()` de 90º en el eje Y
+4. Rotación con física: Rotación con `rigidbody.MoveRotation()` de 90º en el eje Y
 ```cs
 Quaternion rotacionFisica = Quaternion.Euler(0, 90, 0);
 rigidbody.MoveRotation(rotacionFisica);
