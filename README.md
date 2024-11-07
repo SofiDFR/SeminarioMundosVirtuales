@@ -279,8 +279,6 @@ public class LocalToWorldMatrix : MonoBehaviour {
 } 
 ```
 
-  - **`transform.localToWorldMatrix`**: Obtiene la matriz de transformación que mapea las coordenadas locales del objeto a las coordenadas globales. La matriz de 4x4 incluye la posición, la rotación y la escala del objeto en el espacio mundial.
-
 ---
 
 ## 11. ¿Cómo puedes obtener la matriz para cambiar al sistema de referencia de vista?
