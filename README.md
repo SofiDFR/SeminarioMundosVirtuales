@@ -189,7 +189,28 @@ Si, la afirmación es correcta. Para proyectar en espacio 2D en Unity, debemos i
 
 ## 7. Especifica las rotaciones que se han indicado en los ejercicios previos con la utilidad quaternion.
 
+1. Ejercicio 2: Rotación de la cámara 30º alrededor del eje Y
+```cs
+Quaternion rotacionY = Quaternion.Euler(0, 30, 0);
+transform.rotation = rotacionY;
+```
 
+2. Rotación absoluta: Rotación de un objeto 90º alrededor del eje Y
+```cs
+Quaternion rotacion90Y = Quaternion.Euler(0, 90, 0);
+transform.rotation = rotacion90Y;
+```
+
+3. Rotación continua: Rotación relativa de 45º por segundo en el eje Y
+```cs
+transform.rotation *= Quaternion.Euler(0, 45 * Time.deltaTime, 0);
+```
+
+4. Rotación son física: Rotación con `rigidbody.MoveRotation()` de 90º en el eje Y
+```cs
+Quaternion rotacionFisica = Quaternion.Euler(0, 90, 0);
+rigidbody.MoveRotation(rotacionFisica);
+```
 ---
 
 ## 8. ¿Como puedes averiguar la matriz de proyección en perspectiva que se ha usado para proyectar la escena al último frame renderizado?.
