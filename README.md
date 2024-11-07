@@ -1,7 +1,109 @@
 # Seminario Mundos Virtuales
 ## 1. Qué funciones se pueden usar en los scripts de Unity para llevar a cabo traslaciones, rotaciones y escalados.
 
+Cabe destacar que en Unity, los objetos con Rigidbody no deben modificar su posición ni rotación directamente a través de `Transform.position` o `Transform.rotation`, ya que esto omite la simulación de física y puede generar comportamientos inconsistentes. En su lugar, se utilizan los métodos `rigidbody.MovePosition()` y `rigidbody.MoveRotation()`, que respetan las interacciones físicas. Por otro lado, la escala de un objeto con Rigidbody sí puede modificarse manualmente a través de `Transform.localScale`, pero esto no ajusta automáticamente la masa ni otros parámetros físicos. Para mantener la coherencia en la simulación, es importante ajustar la masa proporcionalmente al cambio de escala, ya que el volumen del objeto y la masa están estrechamente relacionados.
 
+* **Traslación (Movimiento)**
+  
+  Para mover un objeto, puedes modificar su posición en el espacio 3D. Esto se hace a través de la propiedad `Transform.position` o usando métodos como `Translate`.
+
+  * `transform.position`
+
+    Modifica la posición del objeto directamente:
+    
+    ```cs
+    transform.position = new Vector3(5, 2, 0);
+    transform.Translate()
+    ```
+
+  * `transform.Translate()`
+
+    Mueve el objeto de acuerdo a un vector de desplazamiento. El desplazamiento puede ser relativo a las coordenadas globales o locales, dependiendo del parámetro usado.
+
+    ```cs
+    // Mueve el objeto en dirección de los ejes locales
+    transform.Translate(Vector3.forward * 2);  // Mueve 2 unidades hacia adelante
+    
+    // Mueve el objeto en dirección global
+    transform.Translate(Vector3.right * 3, Space.World);  // Mueve 3 unidades a la derecha
+    ```
+
+  * `rigidbody.MovePosition()`
+
+    Este método mueve el objeto respetando las leyes de la física, como las colisiones y la gravedad. Es útil cuando deseas mover un objeto sin alterar su comportamiento físico.
+    
+    ```cs
+    // Mueve el objeto a una nueva posición, respetando la simulación física rigidbody.MovePosition(new Vector3(5, 2, 0));
+    ```
+
+* **Rotación**
+  
+  Para rotar un objeto en Unity, se pueden utilizar varios métodos que permiten aplicar una rotación relativa o absoluta, y algunos respetan la simulación física si se trata de objetos con Rigidbody.
+  
+  * `transform.rotation`
+
+    Modifica la rotación absoluta del objeto en el espacio global utilizando un valor de tipo Quaternion.
+    
+    ```cs
+    // Establece una rotación absoluta para el objeto
+    transform.rotation = Quaternion.Euler(0, 90, 0);  // Rota 90 grados en el eje Y
+    ```
+
+  * `Transform.Rotate()`
+    
+    Aplica una rotación relativa al objeto, sumando la rotación especificada a la actual.
+    
+    ```cs
+    // Rota el objeto localmente (en el espacio del objeto)
+    transform.Rotate(Vector3.up * 45 * Time.deltaTime);  // Rota 45 grados por segundo en el eje Y
+    ```
+
+  * `rigidbody.MoveRotation()`
+
+    Este método mueve la rotación de un objeto con Rigidbody respetando las leyes de la física, como colisiones o fuerzas externas. Es útil cuando no deseas modificar la rotación directamente pero quieres que el Rigidbody lo maneje.
+    
+    ```cs
+    // Rota el objeto respetando la física (por ejemplo, en respuesta a una fuerza)
+    rigidbody.MoveRotation(Quaternion.Euler(0, 90, 0));  // Rota el objeto a 90 grados en el eje Y
+    ```
+
+* **Escalado**
+
+  El escalado de un objeto en Unity se realiza a través de la propiedad Transform.localScale. Sin embargo, es importante tener en cuenta que el escalado de un objeto con Rigidbody no afectará a la masa o la forma física automáticamente. Si el objeto es 
+  escalado, la masa debería ajustarse manualmente, ya que el volumen de un objeto es proporcional al cubo de su escala.
+
+  * `transform.localScale`
+
+    Modifica el tamaño del objeto de manera absoluta. Este valor es un Vector3 que indica el factor de escala en cada uno de los ejes (X, Y, Z).
+    
+    ```cs
+    // Establece un nuevo tamaño para el objeto
+    transform.localScale = new Vector3(2, 2, 2);  // Escala el objeto al doble de su tamaño original
+    ```
+
+  * **Escalado relativo con** `Transform.localScale`
+    
+    También puedes aplicar una escala relativa multiplicando el valor de localScale por un factor.
+    
+    ```cs
+    // Escala el objeto por un factor relativo
+    transform.localScale *= 1.5f;  // Aumenta el tamaño del objeto en un 50%
+    ```
+
+  * **Ajuste de la masa al escalar un objeto con Rigidbody**
+
+    Cuando se escala un objeto con Rigidbody, es necesario ajustar la masa proporcionalmente al cambio de volumen. La masa de un objeto escalado es proporcional al cubo del factor de escala.
+    
+    ```cs
+    // Escala el objeto y ajusta la masa en consecuencia
+    float escalaFactor = 2f;  // Escalar al doble
+    transform.localScale = new Vector3(escalaFactor, escalaFactor, escalaFactor);
+    
+    // Ajusta la masa del Rigidbody (aproximadamente proporcional al volumen)
+    rigidbody.mass *= Mathf.Pow(escalaFactor, 3);  // Escalar la masa proporcionalmente al volumen
+    ```
+     
+---
 
 ## 2. Como trasladarías la cámara 2 metros en cada uno de los ejes y luego la rotas 30º alrededor del eje Y?. Rota la cámara alrededor del eje Y 30ª y desplázala 2 metros en cada uno de los ejes. ¿Obtendrías el mismo resultado en ambos casos?. Justifica el resultado
 
