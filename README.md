@@ -81,5 +81,4 @@ En este caso, se ajustó el valor de `Near` para que se pasara de la posición d
 
 
 
-## 15. ¿Como puedes calcular las coordenadas del sistema de referencia de un objeto con las siguientes propiedades del Transform:?: 
-Position (3, 1, 1), Rotation (45, 0, 45)
+## 15. ¿Como puedes calcular las coordenadas del sistema de referencia de un objeto con las siguientes propiedades del Transform:?: Position (3, 1, 1), Rotation (45, 0, 45)
