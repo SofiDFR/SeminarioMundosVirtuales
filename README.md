@@ -326,8 +326,9 @@ void Start()
 
 Esta matriz define cómo la cámara proyecta el espacio 3D en la pantalla 2D. En particular:
 
-* **Valores en la diagonal (0.71172 y 1.73205)**: Controlan la escala en los ejes X e Y, relacionados con el campo de visión (FOV) y la relación de aspecto de la cámara.
-* **Valores en la tercera columna (-1.00060 y -0.60018)**: Ajustan la profundidad para los planos de recorte cercano y lejano, definiendo el rango de distancias visibles.
+* **Valores en la diagonal principal [00, 11] (0.71172 y 1.73205)**: Controlan la escala de la proyección en los ejes X e Y, respectivamente, que dependen del campo de visión (FOV) y la relación de aspecto.
+* **Valores en la tercera fila [22, 23] (-1.00060 y -0.60018)**: Se encargan de la profundidad, gestionando cómo se proyecta la distancia a los planos de recorte cercano y lejano.
+* **Valores en la cuarta fila [32, 33] (-1.00000 0.00000)**: También están involucrados en la proyección de la profundidad, pero en un sentido diferente dependiendo de la matriz (por ejemplo, la cuarta columna es relevante para la proyección en perspectiva, y las distancias se ajustan entre el plano cercano y lejano).
 
 Esto permite percibir la profundidad en una escena.
 
