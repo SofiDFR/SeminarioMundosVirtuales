@@ -307,13 +307,95 @@ Esta matriz transforma las coordenadas desde el sistema de referencia del mundo 
 
 ## 12. Especifica la matriz de la proyección usado en un instante de la ejecución del ejercicio 1 de la práctica 1.
 
+En un instante de la ejecución del ejercicio 1, la matriz de proyección utilizada por la cámara principal es la siguiente:
+```text
+Matriz de Proyección:
+0.71172	0.00000	0.00000	0.00000
+0.00000	1.73205	0.00000	0.00000
+0.00000	0.00000	-1.00060	-0.60018
+0.00000	0.00000	-1.00000	0.00000
+```
+
+Esta matriz fue obtenida usando el siguiente código en el método `Start()`:
+```cs
+void Start()
+{
+    Matrix4x4 projectionMatrix = Camera.main.projectionMatrix;
+    Debug.Log("Matriz de Proyección:\n" + projectionMatrix);
+}
+```
+
+Esta matriz define cómo la cámara proyecta el espacio 3D en la pantalla 2D. En particular:
+
+* **Valores en la diagonal (0.71172 y 1.73205)**: Controlan la escala en los ejes X e Y, relacionados con el campo de visión (FOV) y la relación de aspecto de la cámara.
+* **Valores en la tercera columna (-1.00060 y -0.60018)**: Ajustan la profundidad para los planos de recorte cercano y lejano, definiendo el rango de distancias visibles.
+
+Esto permite percibir la profundidad en una escena.
+
 ---
 
 ## 13. Especifica la matriz de modelo y vista de la escena del ejercicio 1 de la práctica 1.
 
+1. **Matriz de Modelo**: Define la posición, rotación y escala del objeto en el espacio de la escena.
+```text
+Matriz de Modelo:
+1.00000	0.00000	0.00000	0.00000
+0.00000	1.00000	0.00000	0.00000
+0.00000	0.00000	1.00000	3.00000
+0.00000	0.00000	0.00000	1.00000
+```
+Esta matriz de modelo indica que el objeto está en la misma orientación que el sistema de coordenadas global, sin rotaciones ni escalado, y se encuentra desplazado 3 unidades en el eje Z.
+
+Fue obtenida utilizando el siguiente código en el método `Start()`:
+```cs
+void Start()
+{
+    Matrix4x4 modelMatrix = transform.localToWorldMatrix;
+    Debug.Log("Matriz de Modelo:\n" + modelMatrix);
+}
+```
+
+2. **Matriz de Vista**: Esta Transforma las coordenadas del mundo a las coordenadas de la cámara, lo cual establece la perspectiva de la cámara en la escena.
+```text
+Matriz de Vista:
+1.00000	0.00000	0.00000	0.00000
+0.00000	1.00000	0.00000	0.00000
+0.00000	0.00000	-1.00000	0.00000
+0.00000	0.00000	0.00000	1.00000
+```
+Esta matriz representa una cámara que está orientada en el sistema de coordenadas por defecto, mirando hacia el eje negativo de Z, sin ninguna traslación o rotación aplicada.
+
+Fue obtenida utilizando el siguiente código en el método `Start()`:
+```cs
+void Start()
+{
+    Matrix4x4 viewMatrix = Camera.main.worldToCameraMatrix;
+    Debug.Log("Matriz de Vista:\n" + viewMatrix);
+}
+```
 ---
 
 ## 14. Aplica una rotación en el start de uno de los objetos de la escena y muestra la matriz de cambio al sistema de referencias mundial.
+
+Aplicamos una rotación de 45º en el eje Y a la esfera del ejercicio en el método `Start()`
+```cs
+void Start()
+{
+    transform.rotation = Quaternion.Euler(0, 45, 0);
+    Matrix4x4 modelMatrix = transform.localToWorldMatrix;
+    Debug.Log("Matriz de Modelo con Rotación:\n" + modelMatrix);
+}
+```
+
+La matriz de modelo resultante en el sistema de referencias mundial es la siguiente:
+```text
+Matriz de Modelo con Rotación:
+0.70711	0.00000	0.70711	0.00000
+0.00000	1.00000	0.00000	0.00000
+-0.70711	0.00000	0.70711	3.00000
+0.00000	0.00000	0.00000	1.00000
+```
+En esta matriz, los valores `0.70711` en la primera y tercera fila reflejan la rotación de 45 grados en el eje Y, mientras que el valor `3.00000` en la tercera fila indica una traslación en el eje Z.
 
 ---
 
