@@ -9,11 +9,33 @@
 
 3. Sitúa la esfera de radio 1 en el campo de visión de la cámara y configura un volumen de vista que la recorte parcialmente.
 
+**Configuración**
+Para lograr que la esfera se recorte parcialmente simplemente, desde el `inspector` de la `cámara`, se ajustan los valores de `Clipping Planes`:
+* `Near`: **Distancia mínima** desde la cámara a la cual los objetos son visibles.
+* `Far`: **Distancia máxima** desde la cámara a la cual los objetos son visibles.
 
+![clipping_planes](docs/clipping_planes_3.png)
+
+**Vista en Escena**
+![scene](docs/scene_3.png)
+
+**Vista en Game**
+![esfera](docs/esfera_3.png)
 
 4. Sitúa la esfera de radio 1 en el campo de visión de la cámara y configura el volumen de vista para que la deje fuera de la vista.
 
+**Configuración**
+Para lograr que la esfera se recorte parcialmente simplemente, desde el `inspector` de la `cámara`, se ajustan los valores de `Clipping Planes`:
+* `Near`: **Distancia mínima** desde la cámara a la cual los objetos son visibles.
+* `Far`: **Distancia máxima** desde la cámara a la cual los objetos son visibles.
 
+![clipping_planes](docs/clipping_planes_4.png)
+
+**Vista en Escena**
+![scene](docs/scene_4.png)
+
+**Vista en Game**
+![esfera](docs/esfera_4.png)
 
 5. Como puedes aumentar el ángulo de la cámara. Qué efecto tiene disminuir el ángulo de la cámara.
 
